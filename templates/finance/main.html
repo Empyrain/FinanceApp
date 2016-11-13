@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FinanceApp</title>
+  <link rel="stylesheet" href="{% static "main.css" %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet"></head>
+
+<body>
+  <div class="header">
+      <div class="logo">
+        <a href="/">FinanceApp</a>
+      </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="save_account">
+      <form action="{% url 'main' %}" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Name" name="name" required>
+        <input type="text" placeholder="Last name" name="last_name" required>
+        <input type="text" placeholder="Email" name="email" required>
+        <input type="submit" value="Sign up">
+      </form>
+    </div>
+  </div>
+
+
+  <div class="go-to-wrapper">
+    {% if not accounts %}
+      <div class="accounts">There's no accounts. Try to sign up.</div>
+    {% elif number == 1 %}
+      <div class="accounts">{{number}} account:</div>
+        {% for account in accounts %}
+          <a href="account/{{account.name}}">
+            <div class="go-to">{{ account.name }} {{ account.last_name }}</div>
+          </a>
+        {% endfor %}
+    {% else %}
+      <div class="accounts">{{number}} accounts:</div>
+        {% for account in accounts %}
+          <a href="account/{{account.name}}">
+            <div class="go-to">{{ account.name }} {{ account.last_name }}</div>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+
+
+</body>
+</html>

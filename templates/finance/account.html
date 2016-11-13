@@ -1,0 +1,68 @@
+{% load staticfiles %}
+{% load mathfilters %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FinanceApp</title>
+  <link rel="stylesheet" href="{% static "account.css" %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet"></head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <a href="/">FinanceApp</a>
+    </div>
+  </div>
+
+  <div class="acc-frame">
+    <div id="info-frame-system" style="color: black"><b>{{account_info.0}} {{account_info.1}}</b></div>
+    <div id="info-frame-system">({{account_info.2}})</div> <br>
+    <div id="info-frame-system">Account: </div>
+    <div id="info-frame-bd">{{total}} ₽</div>
+    <div id="info-frame-system">Payments: </div>
+    <div id="info-frame-bd">{{ number }}</div>
+    <div id="info-frame-system">Sort by: </div>
+    <div id="info-frame-bd">date / value</div>
+  </div>
+
+<div class="add-frame">
+  <form action="/account/{{name}}" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Amount: ₽" name="value" autocomplete="off" required>
+    <input type="submit" value="Send">
+</div>
+
+  {% if not charges %}
+    <div class="transactions">
+      <div id="no_payments">You have no payments.</div>
+    </div>
+  {% else %}
+    <div class="transactions">
+      <table>
+        <tr>
+          <th>Date, GMT</th>
+          <th>Credit, ₽</th>
+          <th>Debit, ₽</th>
+        </tr>
+
+        {% for charge in charges %}
+        <tr>
+          <td>{{ charge.date }}</td>
+          {% if charge.value > 0 %}
+            <td>{{ charge.value }}</td>
+            <td></td>
+          {% else %}
+            <td></td>
+            <td>{{ charge.value|abs }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% endif %}
+</body>
+
+</html>

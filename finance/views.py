@@ -1,38 +1,60 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
+from django.views.decorators.http import *
+from datetime import datetime
 from .models import *
+from .forms import *
+
+# MAIN PAGE
+@require_http_methods(["GET", "POST"])
+def render_main_page(request):
+    save_account(request)
+    context = get_accounts()
+    context['form'] = AccountForm
+    return render(request, 'finance/main.html', context)
+
+def get_accounts():
+    accounts = [item for item in Account.objects.all()]
+    return {"accounts": accounts, "number": len(accounts)}
+
+def save_account(request):
+    form = AccountForm(request.POST)
+
+    if form.is_valid():
+        for i in form.fields:
+            if i is None: break
+        else: form.save()
+
+    return render_main_page
+
+# ACCOUNT PAGE
+@require_http_methods(["GET", "POST"])
+def render_account_page(request, name):
+    if request.POST:
+        save_charge(request, name)
+    context = get_charges(name)
+    account = Account.objects.get(pk=name)
+    context['account_info'] = (account.name, account.last_name, account.email)
+    return render(request, 'finance/account.html', context)
 
 
-def response_info(request):
-    # context = get_charges()
-    generator = random_transactions()
-    context = {"events": generator, "numbers": 'gen hasn\'t len()'}
-    return render(request, 'finance/info.html', context)
-
-def response_index(request):
-    context = {}
-    return render(request, 'finance/index.html', context)
-
-def get_charges():
+def get_charges(name):
+    # charges = [item for item in Charge.objects.all().filter(self.account.name==name)]
     charges = []
-    for item in Charge.objects.all():
-        charges.append(item)
-    return {"events": charges, "numbers": len(Charge.objects.all())}
+    total = 0.0
+    for i in Charge.objects.all():
+        if i.account.name == name:
+            charges.append(i)
+            total += i.value
+    return {"charges": charges, "number": len(charges), "total": total, "name": name}
 
-
-from datetime import date
-from decimal import Decimal
-from random import randint
-def random_transactions():
-    today = date.today()
-    start_date = today.replace(month=1, day=1).toordinal()
-    end_date = today.toordinal()
-    while True:
-        start_date = randint(start_date, end_date)
-        random_date = date.fromordinal(start_date)
-        if random_date >= today:
-            break
-        random_value = randint(-10000, 10000), randint(0, 99)
-        random_value = Decimal('%d.%d' % random_value)
-        yield random_date, random_value
+def save_charge(request, name):
+    value = request.POST['value']
+    try:
+        value = float(value)
+        date = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        account = Account.objects.get(pk=name)
+        tmp_charge = Charge(value=value, date=date, account=account)
+        tmp_charge.save()
+    except: pass
+    finally:
+        return render_account_page
