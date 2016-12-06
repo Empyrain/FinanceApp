@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>YQF Bank</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "main.css" %}" type="text/css">
+  </head>
+  <body>
+    <a href="/"><div class="logo">YQF Bank</div></a>
+    <div class="content">
+      <div class="sign-up">
+        <div id="sign">Sign Up</div>
+        <form action="{% url "main" %}" method="post" autocomplete="off">
+          {% csrf_token %}
+          <div class="inputs-sign-up">
+          <input type="text" placeholder="Name" name="sign-up-name" required> <br>
+          <input type="text" placeholder="Surname" name="sign-up-surname" required> <br>
+          <input type="text" placeholder="Email" name="sign-up-email" required><br>
+          <input type="password" placeholder="Password" name="sign-up-password" required> <br>
+          <input type="text" placeholder="Phone" name="sign-up-phone" required> <br>
+          <input type="text" placeholder="Address" name="sign-up-address" required> <br>
+          <input type="submit" value="Sign Up" style="background-color: red;">
+          <div class="info"><a href="/">I already have an account.</a></div>
+          </div>
+        </form>
+      </div>
+  </body>
+</html>

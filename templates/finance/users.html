@@ -1,0 +1,17 @@
+{% extends "finance/base.html" %}
+{% load staticfiles %}
+{% block content %}
+  <link rel="stylesheet" href="{% static "users.css" %}" type="text/css">
+
+  <div class="content">
+    <div id="number-of-users">{{number}} users use our bank</div>
+
+      {% for user in users %}
+        <div class="user-bar">
+          <div id="user-bar-name"> {{ user.name }} {{ user.surname }} </div>
+          <div id="user-bar-other-info"> {{ user.phone }} </div>
+          <div id="user-bar-other-info"> {{ user.address }} </div>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock %}

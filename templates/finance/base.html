@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>YQF Bank</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet">
+  </head>
+  <body>
+    <div class="header">
+      <div class="menu-item">
+        <a href="/users/{{user.name}}"> Profile </a>
+      </div>
+      <div class="menu-item">
+        <a href="/users">Users</a>
+      </div>
+      <div class="menu-item">
+        <a href="#">Static</a>
+      </div>
+      <div class="menu-item">
+        <a href="/">Log out</a>
+      </div>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

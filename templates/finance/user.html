@@ -1,0 +1,35 @@
+{% extends "finance/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" href="{% static "user.css" %}" type="text/css">
+
+
+  <div class="user-info-wrapper" style="margin-top: 90px;">
+    <div id='user-info'>{{user.name}} {{ user.surname }} ({{ user.email }})</div>
+    <div id='user-info'>{{ user.address }}; {{ user.phone }}</div>
+  </div>
+  <div class="user-info-wrapper">
+    <div id='user-info'>Accounts: {{ number }}</div>
+    <div id='user-info'>Total: {{ total }}</div>
+  </div>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Add account" name="add-account">
+  </form>
+
+  <div class="content">
+    {% if not accounts %}
+      <div id="user-info" style="text-align: center">You have no accounts</div>
+    {% endif %}
+    {% for account in accounts %}
+      <a href="{{ account.0.name }}">
+        <div class="account-bar">
+          <!-- [account_object, total_of_acc_obj] -->
+          <div id="name"><b>{{ account.0.name }}</b></div>
+          <div id="name">{{ account.1 }}₽</div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

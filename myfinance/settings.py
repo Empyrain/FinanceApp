@@ -36,9 +36,9 @@ INSTALLED_APPS = [
     'finance',
     'mathfilters',
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'django.contrib.auth',   #auth
+    'django.contrib.contenttypes', #auth
+    'django.contrib.sessions', #auth
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
@@ -134,3 +134,5 @@ STATICFILES_DIRS = (
 
 
 MEDIA_URL = ''
+
+# AUTH_USER_MODEL = 'finance.models.User' #for auth

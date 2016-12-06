@@ -1,43 +1,26 @@
-{% load staticfiles %}
+{% extends "finance/base.html" %}
 {% load mathfilters %}
+{% load staticfiles %}
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>FinanceApp</title>
+{% block content %}
   <link rel="stylesheet" href="{% static "account.css" %}" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet"></head>
-  <meta charset="utf-8">
-</head>
 
-<body>
-  <div class="header">
-    <div class="logo">
-      <a href="/">FinanceApp</a>
-    </div>
+  <div class="user-info-wrapper">
+    <div id='user-info'>Account ID: {{ account.name }}</div>
+    <div id='user-info'>Payments: {{ number }}</div>
+    <div id='user-info'>Total: {{ total }}₽</div>
   </div>
 
-  <div class="acc-frame">
-    <div id="info-frame-system" style="color: black"><b>{{account_info.0}} {{account_info.1}}</b></div>
-    <div id="info-frame-system">({{account_info.2}})</div> <br>
-    <div id="info-frame-system">Account: </div>
-    <div id="info-frame-bd">{{total}} ₽</div>
-    <div id="info-frame-system">Payments: </div>
-    <div id="info-frame-bd">{{ number }}</div>
-    <div id="info-frame-system">Sort by: </div>
-    <div id="info-frame-bd">date / value</div>
+  <div class="add-frame">
+    <form action="/users/{{account.user.name}}/{{account.name}}/" method="post">
+      {% csrf_token %}
+      <input type="text" placeholder="Amount: ₽" name="value" autocomplete="off" required>
+      <input type="submit" value="Send">
   </div>
-
-<div class="add-frame">
-  <form action="/account/{{name}}" method="post">
-    {% csrf_token %}
-    <input type="text" placeholder="Amount: ₽" name="value" autocomplete="off" required>
-    <input type="submit" value="Send">
-</div>
 
   {% if not charges %}
     <div class="transactions">
-      <div id="no_payments">You have no payments.</div>
+      <div id="no_payments">You have no transactions.</div>
     </div>
   {% else %}
     <div class="transactions">
@@ -63,6 +46,5 @@
       </table>
     </div>
   {% endif %}
-</body>
 
-</html>
+{% endblock %}

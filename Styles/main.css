@@ -1,42 +1,35 @@
-body {
-  padding: 0 !important;
-  margin: 0 !important;
-  background-color: #F8F9F9;
-  text-align: center;
-  width: 100%;
+body { background-color: #F8F9F9; text-align: center; }
+a {color: #0080FF; quotes : '\201C' '\201D' '\2018' '\2019'; text-decoration : none;}
 
-}
-a {color : inherit; quotes : '\201C' '\201D' '\2018' '\2019'; text-decoration : none;}
-button {color : inherit; quotes : '\201C' '\201D' '\2018' '\2019'; text-decoration : none;}
-
-input[type=text] {
-  margin-left: 2px;
-  height: 25px;
-  width: 24%;
-  text-align: center;
+input[type=text], input[type=password] {
+  margin-top: 5px;
+  height: 45px;
+  width: 80%;
+  text-align: left;
+  padding-left: 10px;
   font-family: 'Muli', sans-serif;
-  font-size: 14px;
-}
-
-input[type=submit] {
-  height: 25px;
-  text-align: center;
-  margin-left: 10px;
-  background-color: red;
+  font-size: 17px;
   border: none;
-	height: 30px;
-  width: 70px;
+  border-radius: 4px;
+}
+input[type=submit] {
+  margin-top: 5px;
+  height: 35px;
+  width: 20%;
   color: white;
+  margin-top: 7px;
+  text-align: center;
+  padding: 0;
   font-family: 'Muli', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
 }
 
 .header {
   position: fixed;
   z-index: 3;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   width: 100%;
   height: 50px;
   background-color: #212121;
@@ -47,73 +40,49 @@ input[type=submit] {
 .logo {
   font-family: 'Muli', sans-serif;
   font-size: 22px;
-  color: #F0BF19;
+  color: #212121;
   margin-top: 12px;
   margin-left: 25px;
   text-align: left;
 }
 
-.content-wrapper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: auto;
-}
-
-.save_account {
-
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  padding-top: 20px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  margin-top: 50px;
-  background-color: #212121;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+.content {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   color: white;
+}
+
+.sign-up, .sign-in {
   text-align: center;
-}
-
-.save_account:hover {
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25), 0 6px 6px rgba(0,0,0,0.22);
-}
-
-.go-to-wrapper {
-  margin-top: 180px;
-  position: absolute;
-  width: 100%;
-}
-.go-to {
-  font-family: 'Muli', sans-serif;
-  margin-top: 15px;
-  margin-left: 25px;
-  width: 60%;
-  height: 40px;
-  text-align: left;
-  padding-top: 20px;
-  padding-left: 20px;
+  margin: auto;
+  margin-top: 5%;
   background-color: #212121;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  font-size: 18px;
-  color: white;
+  display: inline-block;
+  overflow: auto;
 }
-.go-to:hover {
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25), 0 6px 6px rgba(0,0,0,0.22);
+.sign-up { height: 500px; width: 40%; padding-top: 20px; }
+.sign-in { height: 230px; width: 40%; padding-top: 35px; }
+
+#sign {
+  margin-bottom: 9px;
+  color: white;
+  font-family: 'Muli', sans-serif;
+  font-size: 23px;
 }
 
-.accounts {
+.welcome {
+  margin-top: 75px;
+  text-align: center;
   font-family: 'Muli', sans-serif;
-  text-align: left;
-  margin-left: 25px;
-  font-size: 25px;
+  font-size: 30px;
+}
+
+.info {
+  margin-top: 45px;
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+  font-size: 20px;
+  color: #F0BF19;
 }
