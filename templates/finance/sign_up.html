@@ -10,17 +10,22 @@
     <div class="content">
       <div class="sign-up">
         <div id="sign">Sign Up</div>
-        <form action="{% url "main" %}" method="post" autocomplete="off">
+        <form action="{% url "signup" %}" method="post" autocomplete="off">
           {% csrf_token %}
           <div class="inputs-sign-up">
-          <input type="text" placeholder="Name" name="sign-up-name" required> <br>
-          <input type="text" placeholder="Surname" name="sign-up-surname" required> <br>
-          <input type="text" placeholder="Email" name="sign-up-email" required><br>
-          <input type="password" placeholder="Password" name="sign-up-password" required> <br>
-          <input type="text" placeholder="Phone" name="sign-up-phone" required> <br>
-          <input type="text" placeholder="Address" name="sign-up-address" required> <br>
+          <input type="text" placeholder="Username" name="username" required> <br>
+          <input type="text" placeholder="Name" name="name" required> <br>
+          <input type="text" placeholder="Surname" name="surname" required> <br>
+          <input type="text" placeholder="Phone" name="phone" required> <br>
+          <input type="text" placeholder="Address" name="address" required> <br>
+          <input type="text" placeholder="Email" name="email" required><br>
+          <input type="password" placeholder="Password" name="password" required> <br>
           <input type="submit" value="Sign Up" style="background-color: red;">
-          <div class="info"><a href="/">I already have an account.</a></div>
+          {% if not errors %}
+            <div class="info"><a href="/">I already have an account.</a></div>
+          {% else %}
+            <div class="errors">{{ errors }}</div>
+          {% endif %}
           </div>
         </form>
       </div>

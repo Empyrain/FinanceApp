@@ -12,11 +12,12 @@
       <div class="sign-in">
         <div id="sign">Log In</div>
         <form action="{% url "main" %}" method="post" autocomplete="off">
-          {% csrf_token %}
-          <input type="text" placeholder="Email" name="name" required> <br>
+        {% csrf_token %}
+          <input type="text" placeholder="Username" name="username" required> <br>
           <input type="password" placeholder="Password" name="password" required> <br>
           <input type="submit" value="Log In" style="background-color: blue;">
         </form>
+        {% if errors %}<div class="errors">{{ errors }}</div>{% endif %}
       </div>
     </div>
   </body>

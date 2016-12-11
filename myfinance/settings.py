@@ -134,5 +134,6 @@ STATICFILES_DIRS = (
 
 
 MEDIA_URL = ''
-
-# AUTH_USER_MODEL = 'finance.models.User' #for auth
+ACCOUNT_EMAIL_UNIQUE = True
+# ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
+# AUTH_USER_MODEL = 'finance.User' #for auth

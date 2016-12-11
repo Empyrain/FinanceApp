@@ -8,9 +8,9 @@
 
       {% for user in users %}
         <div class="user-bar">
-          <div id="user-bar-name"> {{ user.name }} {{ user.surname }} </div>
-          <div id="user-bar-other-info"> {{ user.phone }} </div>
-          <div id="user-bar-other-info"> {{ user.address }} </div>
+          <div id="user-bar-name"> {{ user.profile.name }} {{ user.profile.surname }} </div>
+          <div id="user-bar-other-info"> {{ user.profile.phone }} </div>
+          <div id="user-bar-other-info"> {{ user.profile.address }} </div>
         </div>
       {% endfor %}
   </div>
