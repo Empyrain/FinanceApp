@@ -1,22 +1,22 @@
 {% load staticfiles %}
 <html>
   <head>
-    <title>YQF Bank</title>
+    <title>Банк</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet">
   </head>
   <body>
     <div class="header">
       <div class="menu-item">
-        <a href="/users/{{user.username}}"> Profile </a>
+        <a href="/users/{{user.username}}"> Профиль </a>
       </div>
       <div class="menu-item">
-        <a href="/users">Users</a>
+        <a href="/users">Пользователи</a>
       </div>
       <div class="menu-item">
-        <a href="#">Static</a>
+        <a href="/users/{{user.username}}/statistic">Статистика</a>
       </div>
       <div class="menu-item">
-        <a href="/logout">Log out</a>
+        <a href="/logout">Выйти</a>
       </div>
     </div>
 

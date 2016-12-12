@@ -1,28 +1,28 @@
 {% load staticfiles %}
 <html>
   <head>
-    <title>YQF Bank</title>
+    <title>Банк</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet">
     <link rel="stylesheet" href="{% static "main.css" %}" type="text/css">
   </head>
   <body>
-    <a href="/"><div class="logo">YQF Bank</div></a>
+    <a href="/"><div class="logo">Банк</div></a>
     <div class="content">
       <div class="sign-up">
-        <div id="sign">Sign Up</div>
+        <div id="sign">Регистрация</div>
         <form action="{% url "signup" %}" method="post" autocomplete="off">
           {% csrf_token %}
           <div class="inputs-sign-up">
-          <input type="text" placeholder="Username" name="username" required> <br>
-          <input type="text" placeholder="Name" name="name" required> <br>
-          <input type="text" placeholder="Surname" name="surname" required> <br>
-          <input type="text" placeholder="Phone" name="phone" required> <br>
-          <input type="text" placeholder="Address" name="address" required> <br>
-          <input type="text" placeholder="Email" name="email" required><br>
-          <input type="password" placeholder="Password" name="password" required> <br>
+          <input type="text" placeholder="Имя в системе" name="username" required> <br>
+          <input type="text" placeholder="Имя" name="name" required> <br>
+          <input type="text" placeholder="Фамилия" name="surname" required> <br>
+          <input type="text" placeholder="Телефон" name="phone" required> <br>
+          <input type="text" placeholder="Адрес" name="address" required> <br>
+          <input type="text" placeholder="Почта" name="email" required><br>
+          <input type="password" placeholder="Пароль" name="password" required> <br>
           <input type="submit" value="Sign Up" style="background-color: red;">
           {% if not errors %}
-            <div class="info"><a href="/">I already have an account.</a></div>
+            <div class="info"><a href="/">У меня уже есть аккаунт.</a></div>
           {% else %}
             <div class="errors">{{ errors }}</div>
           {% endif %}

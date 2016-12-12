@@ -1,24 +1,14 @@
 {% load staticfiles %}
 <html>
   <head>
-    <title>YQF Bank</title>
+    <title>Банк</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet">
     <link rel="stylesheet" href="{% static "main.css" %}" type="text/css">
   </head>
   <body>
-    <a href="/"><div class="logo">YQF Bank</div></a>
-    <div class="welcome">Please log in or <a href="/sign-up">sign up</a> to continue</div>
+    <a href="/"><div class="logo">Банк</div></a>
+    <div class="welcome"><a href="/login">Войдите</a> или <a href="/sign-up">зарегистрируйтесь</a> для продолжения</div>
     <div class="content">
-      <div class="sign-in">
-        <div id="sign">Log In</div>
-        <form action="{% url "main" %}" method="post" autocomplete="off">
-        {% csrf_token %}
-          <input type="text" placeholder="Username" name="username" required> <br>
-          <input type="password" placeholder="Password" name="password" required> <br>
-          <input type="submit" value="Log In" style="background-color: blue;">
-        </form>
-        {% if errors %}<div class="errors">{{ errors }}</div>{% endif %}
-      </div>
     </div>
   </body>
 </html>

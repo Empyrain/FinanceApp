@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="{% static "users.css" %}" type="text/css">
 
   <div class="content">
-    <div id="number-of-users">{{number}} users use our bank</div>
+    <div id="number-of-users">Количество пользователей: {{number}}</div>
 
       {% for user in users %}
         <div class="user-bar">

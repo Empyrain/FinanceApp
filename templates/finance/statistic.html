@@ -1,0 +1,18 @@
+{% extends "finance/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" href="{% static "user.css" %}" type="text/css">
+
+  {% for month in year_statistics %}
+    <div class="user-info-wrapper" style="margin-top: 90px; height: 160px">
+      {% if month.number_of_charge >= 0 %}
+          <div id='user-info'><b>Количество транзакций:</b> {{ month.number_of_charge }}</div>
+          <div id='user-info'><b>Наибольшая транзакция:</b> {{ month.max_charge }} ₽</div>
+          <div id='user-info'><b>Наименьшая транзакция:</b> {{ month.min_charge }} ₽</div>
+          <div id='user-info'><b>Средняя сумма перевода:</b> {{ month.avg }} ₽</div>
+          <div id='user-info'><b>Первая транзакция:</b> {{ month.oldest_charge }}</div>
+          <div id='user-info'><b>Последняя транзакция:</b> {{ month.latest_charge }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

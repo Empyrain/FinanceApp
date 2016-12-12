@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Банк</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300|Muli" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "main.css" %}" type="text/css">
+  </head>
+  <body>
+    <a href="/"><div class="logo">Банк</div></a>
+    <div class="welcome">Вы можете <a href="/sign-up">зарегистрироваться</a></div>
+    <div class="content">
+      <div class="sign-in">
+        <div id="sign">Вход</div>
+        <form action="{% url "login" %}" method="post" autocomplete="off">
+        {% csrf_token %}
+          <input type="text" placeholder="Username" name="username" autofocus="True" required> <br>
+          <input type="password" placeholder="Password" name="password" required> <br>
+          <input type="submit" value="Войти" style="background-color: blue;">
+        </form>
+        {% if errors %}<div class="errors">{{ errors }}</div>{% endif %}
+      </div>
+    </div>
+  </body>
+</html>

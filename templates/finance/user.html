@@ -9,18 +9,18 @@
     <div id='user-info'> {{ user.profile.address }}; {{ user.profile.phone }}</div>
   </div>
   <div class="user-info-wrapper">
-    <div id='user-info'>You have {{ number }} accounts</div>
-    <div id='user-info'>Total: {{ total }} ₽</div>
+    <div id='user-info'>Количество аккаунтов: {{ number }}</div>
+    <div id='user-info'>Всего: {{ total }} ₽</div>
   </div>
 
   <form action="" method="post">
     {% csrf_token %}
-    <input type="submit" value="Add account" name="add-account">
+    <input type="submit" value="Создать аккаунт" name="add-account">
   </form>
 
   <div class="content">
     {% if not accs_and_totals %}
-      <div id="user-info" style="text-align: center">You have no accounts</div>
+      <div id="user-info" style="text-align: center">У вас пока нет аккаунтов></div>
     {% endif %}
     {% for acc_and_total in accs_and_totals %}
       <a href="{{ acc_and_total.0.name }}"> <!-- TODO: WHY LINK? -->

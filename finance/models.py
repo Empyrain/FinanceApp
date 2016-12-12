@@ -32,7 +32,7 @@ class Charge(models.Model):
     class Meta:
         db_table = "Charge"
     value = models.FloatField(blank=True, default=0.0)
-    date = models.CharField(max_length=22)
+    date = models.DateTimeField(auto_now_add=True, blank=True)
     account = models.ForeignKey(
         Account,
         on_delete=models.CASCADE,
